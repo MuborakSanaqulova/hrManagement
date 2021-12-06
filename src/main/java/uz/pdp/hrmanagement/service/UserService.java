@@ -1,9 +1,10 @@
 package uz.pdp.hrmanagement.service;
 
-import org.springframework.http.ResponseEntity;
-import uz.pdp.hrmanagement.common.ResponseData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import uz.pdp.hrmanagement.model.User;
-import uz.pdp.hrmanagement.payload.LoginDto;
+import uz.pdp.hrmanagement.payload.ChangeRoleDto;
+import uz.pdp.hrmanagement.payload.EditUserDto;
 import uz.pdp.hrmanagement.payload.UserDto;
 import uz.pdp.hrmanagement.payload.UserVerifyDto;
 
@@ -24,5 +25,21 @@ public interface UserService {
 
     Optional<User> findByEmail(String username);
 
-    ResponseEntity<ResponseData<String>> login(LoginDto loginDto);
+    Page<UserDto> findAll(Pageable pageable);
+
+    Page<User> findAllEntity(Pageable pageable);
+
+    Optional<User> findById(Long id);
+
+    UserDto changeRole(User user, ChangeRoleDto roleName);
+
+    User changeRoleEntity(User user, ChangeRoleDto roleName);
+
+    Optional<UserDto> findOne(Long id);
+
+    void deleteUser(Long id);
+
+    UserDto editUser(User user, EditUserDto editUserDto);
+
 }
+

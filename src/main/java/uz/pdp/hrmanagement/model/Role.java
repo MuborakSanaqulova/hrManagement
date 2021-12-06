@@ -3,13 +3,13 @@ package uz.pdp.hrmanagement.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import uz.pdp.hrmanagement.model.enums.RoleName;
 
 import javax.persistence.*;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "roleS")
 public class Role implements GrantedAuthority {

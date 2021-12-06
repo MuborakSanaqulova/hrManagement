@@ -32,13 +32,11 @@ spring:
     port: 587
     username: bangtanfangirl0109@gmail.com
     password: BulletProofGirl99!
+    protocol: smtp
     properties:
       mail:
         smtp:
           auth: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
-          startrls:
-            enable: true
-    protocol: smtp
+          starttls.enable: true
+          ssl.trust: smtp.gmail.com
+

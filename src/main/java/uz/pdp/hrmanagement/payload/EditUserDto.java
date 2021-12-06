@@ -9,14 +9,12 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
-
+public class EditUserDto {
     private Long id;
 
     private String firstName;
 
     private String lastName;
 
-    @NotNull(message = "email can not be empty")
-    private String email;
+    private String password;
 }

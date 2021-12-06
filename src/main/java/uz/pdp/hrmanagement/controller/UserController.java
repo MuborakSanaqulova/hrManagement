@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -34,6 +35,7 @@ public class UserController {
     @Autowired
     JwtProvider jwtProvider;
 
+    @PreAuthorize("hasAnyRole('ROLE_DIRECTOR','ROLE_HR_MANAGER')")
     @PostMapping("/addUser")
     public ResponseEntity<ResponseData<UserDto>> addUser(@RequestBody UserDto userDto) {
         boolean byEmail = userService.existByEmail(userDto.getEmail());
@@ -73,11 +75,19 @@ public class UserController {
         return ResponseData.response("login yoki parol xato", HttpStatus.BAD_REQUEST);
     }
 
+    @PreAuthorize("hasRole('ROLE_DIRECTOR')")
     @GetMapping("/getAll")
     public ResponseEntity<ResponseData<Page<UserDto>>> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable) {
        return ResponseData.response(userService.findAll(pageable));
     }
 
+    @PreAuthorize("hasRole('ROLE_HR_MANAGER')")
+    @GetMapping("getWorkers")
+    public ResponseEntity<ResponseData<Page<UserDto>>> getWorkers(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+        return ResponseData.response(userService.findWorkers(pageable));
+    }
+
+    @PreAuthorize("hasRole('ROLE_DIRECTOR')")
     @PutMapping("/changeRole/{id}")
     public ResponseEntity<ResponseData<UserDto>> changeRole(@PathVariable Long id, @RequestBody ChangeRoleDto roleName){
         Optional<User> optionalUser = userService.findById(id);
@@ -87,6 +97,7 @@ public class UserController {
        return ResponseData.response(userService.changeRole(optionalUser.get(), roleName));
     }
 
+    @PreAuthorize("hasRole('ROLE_DIRECTOR')")
     @GetMapping("oneUser/{id}")
     public ResponseEntity<ResponseData<UserDto>> findOne(@PathVariable Long id){
         Optional<UserDto> optionalUser = userService.findOne(id);
@@ -96,6 +107,7 @@ public class UserController {
         return ResponseData.response(optionalUser.get());
     }
 
+    @PreAuthorize("hasRole('ROLE_DIRECTOR')")
     @DeleteMapping("/deleteManager/{id}")
     public ResponseEntity<?> deleteManager(@PathVariable Long id){
         Optional<User> optionalUser = userService.findById(id);
@@ -105,6 +117,7 @@ public class UserController {
         return ResponseData.response("successfully deleted");
     }
 
+    @PreAuthorize("hasRole('ROLE_HR_MANAGER')")
     @DeleteMapping("/deleteWorker/{id}")
     public ResponseEntity<?> deleteWorker(@PathVariable Long id){
         Optional<User> optionalUser = userService.findById(id);

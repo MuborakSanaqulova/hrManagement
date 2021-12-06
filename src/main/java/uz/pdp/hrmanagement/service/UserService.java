@@ -41,5 +41,8 @@ public interface UserService {
 
     UserDto editUser(User user, EditUserDto editUserDto);
 
+    Page<UserDto> findWorkers(Pageable pageable);
+
+    Page<User> findWorkersEntity(Pageable pageable);
 }
 

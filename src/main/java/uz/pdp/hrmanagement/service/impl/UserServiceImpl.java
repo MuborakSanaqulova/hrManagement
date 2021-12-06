@@ -134,4 +134,14 @@ public class UserServiceImpl implements UserService {
         return userMapper.toDto(user);
     }
 
+    @Override
+    public Page<UserDto> findWorkers(Pageable pageable) {
+        return findWorkersEntity(pageable).map(userMapper::toDto);
+    }
+
+    @Override
+    public Page<User> findWorkersEntity(Pageable pageable) {
+        return userRepository.findAllByRoleId(4L, pageable);
+    }
+
 }

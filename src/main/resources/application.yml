@@ -1,0 +1,44 @@
+#server.port=8081
+#spring.datasource.url=jdbc:postgresql://localhost:5432/hr_management
+#spring.datasource.username=postgres
+#spring.datasource.password=1
+#spring.main.allow-circular-references=true
+#
+#spring.jpa.hibernate.ddl-auto=update
+#
+#spring.jpa.generate-ddl=true
+##spring.sql.init.mode=never
+#
+#spring.data.rest.base-path=/api
+
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hr_management
+    username: postgres
+    password: 1
+  main:
+    allow-circular-references: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+  sql:
+    init:
+      mode: never
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: bangtanfangirl0109@gmail.com
+    password: BulletProofGirl99!
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          startrls:
+            enable: true
+    protocol: smtp

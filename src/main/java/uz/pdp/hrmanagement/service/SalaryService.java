@@ -31,4 +31,6 @@ public interface SalaryService {
     Page<Salary> findWorkersEntity(Pageable pageable);
 
     Optional<SalaryDto> findByIdDto(Long id);
+
+    Optional<Salary> findByUserId(Long userId);
 }

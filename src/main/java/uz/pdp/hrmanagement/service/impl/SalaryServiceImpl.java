@@ -82,5 +82,9 @@ public class SalaryServiceImpl implements SalaryService {
         return findById(id).map(salaryMapper::toDto);
     }
 
+    @Override
+    public Optional<Salary> findByUserId(Long userId){
+        return salaryRepository.findByUserId(userId);
+    }
 
 }

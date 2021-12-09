@@ -71,7 +71,7 @@ public class SalaryController {
     }
 
     @PreAuthorize("hasRole('ROLE_HR_MANAGER')")
-    @GetMapping
+    @GetMapping("/workers")
     public ResponseEntity<ResponseData<Page<SalaryDto>>> workersSalaries(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
         return ResponseData.response(salaryService.findWorkers(pageable));
     }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.time.Month;
 
 @Data
@@ -22,11 +23,13 @@ public class MonthlySalary {
 
     private Double amount;
 
+    private Instant paymentTime = Instant.now();
+
     @ManyToOne
     private User user;
 
     @Enumerated(EnumType.STRING)
-    private Month day;
+    private Month month;
 
     private Boolean status;
 }

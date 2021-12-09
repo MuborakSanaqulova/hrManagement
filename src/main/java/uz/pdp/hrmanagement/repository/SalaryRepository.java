@@ -20,4 +20,6 @@ public interface SalaryRepository extends JpaRepository<Salary, Long> {
     @Query(value = "select * from salary join users u on u.id = salary.user_id join roles r on r.id = u.role_id where r.id=4", nativeQuery = true)
     Page<Salary> findWorkersPage(Pageable pageable);
 
+    Optional<Salary> findByUserId(Long user_id);
+
 }

@@ -46,7 +46,7 @@ public class MonthlySalaryController {
       return   ResponseData.response(monthlySalaryService.getAllWorkersSalary(pageable));
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_DIRECTOR','ROLE_HR_MANAGER','ROLE_WORKER','ROLE_MANAGER')")
+    @PreAuthorize("hasAnyRole('ROLE_DIRECTOR')")
     @GetMapping("/{id}")
     public ResponseEntity<ResponseData<MonthlySalaryDto>> getOne(@PathVariable Long id){
 
@@ -76,5 +76,6 @@ public class MonthlySalaryController {
 
         return ResponseData.response(result);
     }
+
 
 }

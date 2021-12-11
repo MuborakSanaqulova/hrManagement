@@ -22,7 +22,7 @@ public class TaskDto {
 
     private UserDto taskGiver;
 
-    private LocalDateTime deadline;
+    private Long deadline;
 
     private LocalDateTime doneTime;
 

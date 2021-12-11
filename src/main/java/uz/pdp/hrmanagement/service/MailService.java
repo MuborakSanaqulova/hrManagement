@@ -38,4 +38,24 @@ public class MailService {
         sendEmail(to, subject, content);
     }
 
+    public void sendVerifyTask(String to, String emailCode){
+
+        String content="vazifa :)    "+emailCode+"&email="+to;
+
+        String subject = "Sizga vazifa berildi";
+
+        sendEmail(to, subject, content);
+
+    }
+
+    public void sendDoneTaskMessage(String to, String emailCode){
+
+        String content="Vazifa yakunlandi    "+emailCode+"&email="+to;
+
+        String subject = "vazifa tugatildi";
+
+        sendEmail(to, subject, content);
+
+    }
+
 }

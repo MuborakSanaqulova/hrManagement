@@ -31,11 +31,11 @@ public interface UserService {
 
     Optional<User> findById(Long id);
 
+    Optional<UserDto> findOne(Long id);
+
     UserDto changeRole(User user, ChangeRoleDto roleName);
 
     User changeRoleEntity(User user, ChangeRoleDto roleName);
-
-    Optional<UserDto> findOne(Long id);
 
     void deleteUser(Long id);
 

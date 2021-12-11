@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Task {
 
     @Transient
-    private static final String seqName = "turnpike_seq";
+    private static final String seqName = "task_seq";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = seqName)

@@ -20,6 +20,6 @@ public class TurnpikeDto {
 
     private LocalDate day;
 
-    private UserDto user;
+    private UserDto userDto;
 
 }

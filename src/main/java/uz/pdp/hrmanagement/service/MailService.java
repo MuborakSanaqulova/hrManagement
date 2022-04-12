@@ -20,7 +20,7 @@ public class MailService {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, false, StandardCharsets.UTF_8.name());
             message.setSubject(subject);
-            message.setFrom("bangtanfangirl0109@gmail.com");
+            message.setFrom("test@gmail.com");
             message.setTo(to);
             message.setText(content);
             javaMailSender.send(mimeMessage);
